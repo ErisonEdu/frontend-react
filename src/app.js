@@ -15,12 +15,16 @@ function App() {
         })
     }, []);
 
-    function handleAddProject() {
+    async function handleAddProject() {
         //projects.push(`Novo Projeto ${Date.now()}`);
+        //setprojects([...projects, `Novo Projeto ${Date.now()}`]);
+         const response = await api.post('projects', {
+            tittle: `Novo Projeto ${Date.now()}`,
+            owner: "Erison Eduard"
+        })
+        const project = response.data;
 
-        setprojects([...projects, `Novo Projeto ${Date.now()}`]);
-
-        console.log(projects);
+        setprojects([...projects, project]);
     }
 
     return (
